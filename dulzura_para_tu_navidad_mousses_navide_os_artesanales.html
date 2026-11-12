@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulzura para tu Navidad | Mousses Navideños Artesanales</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Tipografías festivas y elegantes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Great+Vibes&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome para íconos navideños y redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Hoja de Estilos CSS Separada -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Archivo JavaScript Separado -->
+    <script src="script.js"></script>
+</head>
+<body class="font-sans text-gray-800 antialiased selection:bg-navidad-rojo selection:text-white">
+
+    <!-- Canvas de Copos de Nieve Cayendo -->
+    <canvas id="snow-canvas"></canvas>
+
+    <!-- ===================================================================== -->
+    <!-- 1. HEADER FESTIVO CON LUCES NAVIDEÑAS Y NAVEGACIÓN                    -->
+    <!-- ===================================================================== -->
+    <header class="sticky top-0 z-50 bg-gradient-to-r from-navidad-rojoOscuro via-navidad-rojo to-navidad-rojoOscuro text-white shadow-2xl border-b-4 border-navidad-dorado">
+        <!-- Barra superior de contacto rápido -->
+        <div class="bg-navidad-verdeOscuro text-xs sm:text-sm py-1.5 px-4 border-b border-navidad-dorado/40">
+            <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+                <div class="flex items-center gap-2 text-navidad-doradoClaro font-medium">
+                    <span>🎄</span>
+                    <span>¡Pedidos Navideños Abiertos! Entregas para Nochebuena y Año Nuevo</span>
+                    <span>✨</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.me/51968994343?text=Hola%20Dulzura%20para%20tu%20Navidad%20%F0%9F%8E%84%2C%20quisiera%20hacer%20un%20pedido%20de%20mousse%20navide%C3%B1o." target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-yellow-300 hover:text-white transition font-semibold">
+                        <i class="fab fa-whatsapp text-green-400 text-base"></i>
+                        <span>968 994 343</span>
+                    </a>
+                    <span class="text-navidad-dorado">|</span>
+                    <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-yellow-200 hover:text-white transition font-semibold">
+                        <i class="fab fa-instagram text-pink-300 text-base"></i>
+                        <span>@Dulzura para tu navidad</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Luces Navideñas Animadas -->
+        <ul class="christmas-lights w-full h-6" id="lights-bar" aria-hidden="true">
+            <li class="light-red"></li>
+            <li class="light-gold"></li>
+            <li class="light-green"></li>
+            <li class="light-red"></li>
+            <li class="light-gold"></li>
+            <li class="light-green"></li>
+            <li class="light-red"></li>
+            <li class="light-gold"></li>
+            <li class="light-green"></li>
+            <li class="light-red"></li>
+            <li class="light-gold"></li>
+            <li class="light-green"></li>
+            <li class="light-red hidden sm:block"></li>
+            <li class="light-gold hidden sm:block"></li>
+            <li class="light-green hidden sm:block"></li>
+            <li class="light-red hidden md:block"></li>
+            <li class="light-gold hidden md:block"></li>
+            <li class="light-green hidden md:block"></li>
+        </ul>
+
+        <!-- Navegación Principal -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3 pt-1 flex items-center justify-between">
+            <!-- Logo y Nombre de la Marca -->
+            <a href="#inicio" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full gold-gradient p-0.5 shadow-lg transform group-hover:scale-105 transition">
+                    <div class="w-full h-full bg-navidad-verdeOscuro rounded-full flex items-center justify-center relative">
+                        <span class="text-2xl sm:text-3xl">🎅</span>
+                        <span class="absolute -top-1 -right-1 text-xs">✨</span>
+                    </div>
+                </div>
+                <div>
+                    <span class="block font-script text-2xl sm:text-4xl gold-text leading-none tracking-wide">
+                        Dulzura para tu Navidad
+                    </span>
+                    <span class="block text-[10px] sm:text-xs uppercase tracking-widest text-yellow-200 font-semibold mt-0.5">
+                        ★ Mousses Artesanales & Repostería Festiva ★
+                    </span>
+                </div>
+            </a>
+
+            <!-- Menú Desktop -->
+            <nav class="hidden md:flex items-center gap-6 font-semibold text-sm">
+                <a href="#inicio" class="hover:text-navidad-amarillo transition flex items-center gap-1"><span>🎄</span> Inicio</a>
+                <a href="#catalogo" class="hover:text-navidad-amarillo transition flex items-center gap-1"><span>🍮</span> Mousses</a>
+                <a href="#galeria" class="hover:text-navidad-amarillo transition flex items-center gap-1"><span>📸</span> Galería</a>
+                <a href="#packs" class="hover:text-navidad-amarillo transition flex items-center gap-1"><span>🎁</span> Packs Cena</a>
+                <a href="#contacto" class="hover:text-navidad-amarillo transition flex items-center gap-1"><span>🔔</span> Contacto</a>
+            </nav>
+
+            <!-- Botón CTA Header y Botón Menú Móvil -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/51968994343?text=Hola%20Dulzura%20para%20tu%20Navidad%20%F0%9F%8E%84%2C%20quiero%20ver%20la%20carta%20y%20hacer%20un%20pedido." target="_blank" rel="noopener noreferrer" class="btn-shimmer bg-gradient-to-r from-navidad-verde to-navidad-verdeClaro hover:from-green-700 hover:to-green-600 text-white font-bold py-2 px-4 rounded-full border-2 border-navidad-dorado shadow-lg flex items-center gap-2 text-xs sm:text-sm transition transform hover:scale-105">
+                    <i class="fab fa-whatsapp text-lg text-yellow-300"></i>
+                    <span class="hidden sm:inline">Pedir Ahora</span>
+                    <span class="sm:hidden">Pedir</span>
+                </a>
+
+                <button id="mobile-menu-btn" aria-label="Abrir menú" class="md:hidden text-yellow-300 hover:text-white p-2 rounded-lg border border-navidad-dorado/50">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navidad-rojoOscuro border-t border-navidad-dorado/40 px-4 py-4 space-y-3 text-center font-semibold">
+            <a href="#inicio" class="block py-2 rounded-lg hover:bg-navidad-rojo text-yellow-100">🎄 Inicio</a>
+            <a href="#catalogo" class="block py-2 rounded-lg hover:bg-navidad-rojo text-yellow-100">🍮 Catálogo de Mousses</a>
+            <a href="#galeria" class="block py-2 rounded-lg hover:bg-navidad-rojo text-yellow-100">📸 Galería Navideña</a>
+            <a href="#packs" class="block py-2 rounded-lg hover:bg-navidad-rojo text-yellow-100">🎁 Packs Nochebuena</a>
+            <a href="#contacto" class="block py-2 rounded-lg hover:bg-navidad-rojo text-yellow-100">🔔 Contacto & Redes</a>
+        </div>
+    </header>
+
+    <!-- ===================================================================== -->
+    <!-- 2. HERO BANNER FESTIVO                                                -->
+    <!-- ===================================================================== -->
+    <section id="inicio" class="relative bg-gradient-to-br from-navidad-verdeOscuro via-navidad-verde to-navidad-rojoOscuro text-white overflow-hidden py-14 sm:py-20 lg:py-24 border-b-8 border-navidad-dorado">
+        <!-- Adornos navideños flotantes decorativos -->
+        <div class="absolute top-6 left-6 text-4xl sm:text-6xl opacity-30 animate-float select-none pointer-events-none">❄️</div>
+        <div class="absolute bottom-10 left-12 text-4xl sm:text-5xl opacity-35 animate-float select-none pointer-events-none" style="animation-delay: 1s;">🎄</div>
+        <div class="absolute top-10 right-10 text-4xl sm:text-6xl opacity-30 animate-float select-none pointer-events-none" style="animation-delay: 1.5s;">⭐</div>
+        <div class="absolute bottom-8 right-12 text-4xl sm:text-5xl opacity-35 animate-float select-none pointer-events-none" style="animation-delay: 2s;">🎁</div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Columna Izquierda: Textos y Llamados a la Acción -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-navidad-rojo/90 border-2 border-navidad-dorado px-4 py-1.5 rounded-full shadow-lg">
+                        <span class="text-yellow-300">✨</span>
+                        <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-yellow-100">Edición Especial Navidad 2026</span>
+                        <span class="text-yellow-300">🎅</span>
+                    </div>
+
+                    <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-black leading-tight">
+                        El Postre Mágico que Ilumina tu 
+                        <span class="block font-script text-5xl sm:text-7xl lg:text-8xl gold-text mt-2 py-1">
+                            Mesa Navideña
+                        </span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-yellow-50/95 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        En <strong class="text-navidad-amarillo">Dulzura para tu Navidad</strong> preparamos suaves, cremosos e irresistibles <strong class="text-yellow-300">Mousses Navideños Artesanales</strong> decorados con chocolate belga, frutos rojos, chispas doradas y todo el espíritu de la Nochebuena.
+                    </p>
+
+                    <!-- Botones de Acción -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#catalogo" class="btn-shimmer w-full sm:w-auto gold-gradient text-navidad-rojoOscuro font-extrabold py-4 px-8 rounded-full shadow-2xl border-2 border-white flex items-center justify-center gap-2 text-base sm:text-lg transform hover:scale-105 transition">
+                            <span>🍮</span>
+                            <span>Ver Sabores Navideños</span>
+                        </a>
+
+                        <a href="https://wa.me/51968994343?text=Hola%20Dulzura%20para%20tu%20Navidad%20%F0%9F%8E%84%2C%20quisiera%20reservar%20un%20Mousse%20Navide%C3%B1o." target="_blank" rel="noopener noreferrer" class="btn-shimmer w-full sm:w-auto bg-navidad-rojo hover:bg-red-700 text-white font-bold py-4 px-8 rounded-full shadow-2xl border-2 border-navidad-dorado flex items-center justify-center gap-2 text-base sm:text-lg transform hover:scale-105 transition">
+                            <i class="fab fa-whatsapp text-2xl text-green-300"></i>
+                            <span>WhatsApp: 968 994 343</span>
+                        </a>
+                    </div>
+
+                    <!-- Garantías / Insignias Festivas -->
+                    <div class="grid grid-cols-3 gap-3 pt-4 max-w-lg mx-auto lg:mx-0 text-center">
+                        <div class="bg-black/25 backdrop-blur-sm border border-navidad-dorado/50 rounded-2xl p-3">
+                            <span class="text-2xl block">🥣</span>
+                            <span class="text-xs font-semibold text-yellow-200">100% Artesanal</span>
+                        </div>
+                        <div class="bg-black/25 backdrop-blur-sm border border-navidad-dorado/50 rounded-2xl p-3">
+                            <span class="text-2xl block">🎀</span>
+                            <span class="text-xs font-semibold text-yellow-200">Presentación de Regalo</span>
+                        </div>
+                        <div class="bg-black/25 backdrop-blur-sm border border-navidad-dorado/50 rounded-2xl p-3">
+                            <span class="text-2xl block">🚚</span>
+                            <span class="text-xs font-semibold text-yellow-200">Delivery Festivo</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Foto Principal con Marco Dorado Navideño -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md">
+                        <!-- Adorno superior de muérdago y campanas -->
+                        <div class="absolute -top-7 left-1/2 -translate-x-1/2 z-20 bg-navidad-rojo text-white px-5 py-1.5 rounded-full border-2 border-navidad-dorado shadow-xl flex items-center gap-2 whitespace-nowrap">
+                            <span>🔔</span>
+                            <span class="font-bold text-xs sm:text-sm tracking-wide text-yellow-200">¡EDICIÓN LIMITADA!</span>
+                            <span>🔔</span>
+                        </div>
+
+                        <!-- Marco Dorado -->
+                        <div class="gold-gradient p-2.5 sm:p-3 rounded-3xl shadow-2xl transform rotate-1 hover:rotate-0 transition duration-500">
+                            <div class="relative rounded-2xl overflow-hidden bg-navidad-rojoOscuro aspect-[4/3]">
+                                <!-- Imagen principal exacta proporcionada por el usuario -->
+                                <img id="hero-img"
+                                     src="WhatsApp Image 2026-09-22 at 9.11.12 PM.jpeg" 
+                                     onerror="this.onerror=null;this.src='https://placehold.co/800x600/B22222/FFF1A8?text=Tronco+Reno+Navide%C3%B1o+de+Chocolate';"
+                                     alt="Tronco Reno Navideño de Chocolate brillante sobre base dorada" 
+                                     class="w-full h-full object-cover">
+                                
+                                <!-- Etiqueta inferior flotante -->
+                                <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-5 text-white">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <span class="text-xs uppercase tracking-wider text-navidad-amarillo font-bold">Favorito de Nochebuena</span>
+                                            <h3 class="font-display text-lg sm:text-xl font-bold text-white">Tronco Reno de Chocolate</h3>
+                                        </div>
+                                        <span class="bg-navidad-rojo border border-navidad-dorado text-yellow-300 font-extrabold px-3 py-1 rounded-full text-sm">
+                                            Desde S/ 38
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sticker flotante Instagram -->
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="absolute -bottom-5 -left-3 sm:-left-6 z-20 bg-white text-navidad-rojoOscuro px-4 py-2.5 rounded-2xl border-2 border-navidad-dorado shadow-xl flex items-center gap-2.5 hover:scale-105 transition">
+                            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white flex items-center justify-center">
+                                <i class="fab fa-instagram text-lg"></i>
+                            </div>
+                            <div class="text-left leading-tight">
+                                <span class="block text-[10px] text-gray-500 font-bold uppercase">Síguenos en IG</span>
+                                <span class="block text-xs sm:text-sm font-extrabold text-navidad-rojo">Dulzura para tu navidad</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Separador Bastón de Caramelo -->
+    <div class="candy-cane-border w-full shadow-md"></div>
+
+    <!-- ===================================================================== -->
+    <!-- PANEL INTERACTIVO PARA QUE EL USUARIO CARGUE SUS PROPIAS FOTOS        -->
+    <!-- ===================================================================== -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <div class="bg-gradient-to-r from-amber-50 via-yellow-50 to-amber-50 border-2 border-dashed border-navidad-dorado rounded-2xl p-4 sm:p-5 shadow-md flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3 text-center md:text-left">
+                <span class="text-3xl">🖼️</span>
+                <div>
+                    <h2 class="font-bold text-navidad-verdeOscuro text-sm sm:text-base">
+                        ¿Quieres ver esta página con tus propias fotos reales de tus Mousses?
+                    </h2>
+                    <p class="text-xs sm:text-sm text-gray-700">
+                        Selecciona tus fotos desde tu celular o PC para previsualizarlas al instante en la portada, catálogo y galería (también puedes cambiar las rutas directamente en el código HTML).
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-2 shrink-0">
+                <label for="custom-photos-input" class="cursor-pointer bg-navidad-verde hover:bg-navidad-verdeClaro text-white font-bold text-xs sm:text-sm py-2.5 px-4 rounded-full border-2 border-navidad-dorado shadow transition flex items-center gap-2">
+                    <i class="fas fa-camera"></i>
+                    <span>Cargar Mis Fotos</span>
+                </label>
+                <input type="file" id="custom-photos-input" accept="image/*" multiple class="hidden">
+                <button id="reset-photos-btn" class="hidden bg-navidad-rojo hover:bg-red-700 text-white font-semibold text-xs py-2.5 px-3 rounded-full transition">
+                    Restaurar
+                </button>
+            </div>
+        </div>
+        <div id="photo-upload-feedback" class="hidden mt-2 text-center text-xs font-bold text-navidad-verde bg-green-100 border border-green-400 rounded-xl py-2 px-4"></div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 3. CATÁLOGO DE MOUSSES NAVIDEÑOS                                      -->
+    <!-- ===================================================================== -->
+    <section id="catalogo" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Encabezado de Sección -->
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <div class="inline-flex items-center gap-2 text-navidad-rojo font-bold text-sm uppercase tracking-widest bg-red-100/80 px-4 py-1 rounded-full border border-navidad-dorado">
+                <span>🎄</span> Carta Navideña Artesanal <span>🎄</span>
+            </div>
+            <h2 class="font-display text-3xl sm:text-5xl font-black text-navidad-rojoOscuro">
+                Nuestros <span class="text-navidad-verde">Mousses Navideños</span>
+            </h2>
+            <div class="flex items-center justify-center gap-3 text-navidad-dorado text-xl">
+                <span>━━━</span>
+                <span>⭐🎅⭐</span>
+                <span>━━━</span>
+            </div>
+            <p class="text-gray-700 text-sm sm:text-base">
+                Textura aireada que se derrite en tu boca, elaborados con ingredientes seleccionados y decoración festiva hecha a mano. ¡Elige tu favorito y pídelo directo por WhatsApp!
+            </p>
+        </div>
+
+        <!-- Grid de Productos -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- PRODUCTO 1: Tronco Reno de Chocolate y Avellanas (Imagen 1) -->
+            <article class="gold-border rounded-3xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 transition duration-300 bg-white group">
+                <div>
+                    <div class="relative h-60 overflow-hidden bg-navidad-rojoOscuro">
+                        <img src="WhatsApp Image 2026-09-22 at 9.11.12 PM.jpeg" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x500/7A0C0C/FFF1A8?text=Tronco+Reno+Chocolate';"
+                             alt="Tronco Reno de Chocolate y Avellanas sobre base dorada" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        
+                        <span class="absolute top-3 left-3 bg-navidad-rojo text-white text-xs font-bold px-3 py-1 rounded-full border border-navidad-dorado shadow">
+                            🦌 Edición Estrella
+                        </span>
+                        <span class="absolute top-3 right-3 bg-navidad-amarillo text-navidad-rojoOscuro text-xs font-extrabold px-2.5 py-1 rounded-full shadow">
+                            ★ Top Ventas
+                        </span>
+                    </div>
+
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-navidad-rojo">Glaseado Brillante & Oro</span>
+                            <span class="text-lg">🎄</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold text-navidad-rojoOscuro leading-snug">
+                            Tronco Reno de Chocolate y Avellanas
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Suave lingote de mousse de chocolate con baño espejo brillante, cuernos de chocolate pintados en oro comestible, nariz roja dulce y base crocante de nueces sobre bandeja dorada.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-5 pt-0 space-y-3">
+                    <div class="flex items-baseline justify-between border-t border-amber-200 pt-3">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Lingote Familiar</span>
+                            <span class="text-2xl font-black text-navidad-rojo">S/ 45.00</span>
+                        </div>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-lg">6 - 8 porciones</span>
+                    </div>
+
+                    <button onclick="pedirWhatsApp('Tronco Reno de Chocolate y Avellanas', 'S/ 45.00')" 
+                            class="btn-shimmer w-full bg-gradient-to-r from-navidad-rojo to-navidad-rojoVivo hover:from-red-700 hover:to-red-600 text-white font-bold py-3 px-4 rounded-2xl border-2 border-navidad-dorado shadow-md flex items-center justify-center gap-2 transition">
+                        <i class="fab fa-whatsapp text-xl text-yellow-300"></i>
+                        <span>Pedir por WhatsApp</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCTO 2: Copas Reno Cremoso con Nueces (Imagen 2) -->
+            <article class="gold-border rounded-3xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 transition duration-300 bg-white group">
+                <div>
+                    <div class="relative h-60 overflow-hidden bg-navidad-rojoOscuro">
+                        <img src="images.jpg" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x500/1B5E20/FFF1A8?text=Copas+Reno+Cremoso';"
+                             alt="Copas de mousse cremoso de chocolate decoradas como renos navideños con nueces" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        
+                        <span class="absolute top-3 left-3 bg-navidad-verde text-white text-xs font-bold px-3 py-1 rounded-full border border-navidad-dorado shadow">
+                            🍫 Súper Cremoso
+                        </span>
+                        <span class="absolute top-3 right-3 bg-navidad-amarillo text-navidad-rojoOscuro text-xs font-extrabold px-2.5 py-1 rounded-full shadow">
+                            ✨ Favorito Niños
+                        </span>
+                    </div>
+
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-navidad-verde">Copa Individual Festiva</span>
+                            <span class="text-lg">🎅</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold text-navidad-rojoOscuro leading-snug">
+                            Copas Reno Cremoso con Nueces
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Aireado mousse de chocolate con leche en copas de borde dorado, decorado como tiernos renos navideños con nueces bañadas en cacao, ojitos dulces y nariz roja cereza.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-5 pt-0 space-y-3">
+                    <div class="flex items-baseline justify-between border-t border-amber-200 pt-3">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Pack x 4 Copas</span>
+                            <span class="text-2xl font-black text-navidad-rojo">S/ 38.00</span>
+                        </div>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-lg">4 unidades</span>
+                    </div>
+
+                    <button onclick="pedirWhatsApp('Copas Reno Cremoso con Nueces (Pack x 4)', 'S/ 38.00')" 
+                            class="btn-shimmer w-full bg-gradient-to-r from-navidad-verde to-navidad-verdeClaro hover:from-green-800 hover:to-green-700 text-white font-bold py-3 px-4 rounded-2xl border-2 border-navidad-dorado shadow-md flex items-center justify-center gap-2 transition">
+                        <i class="fab fa-whatsapp text-xl text-yellow-300"></i>
+                        <span>Pedir por WhatsApp</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCTO 3: Mousse Reno Artesanal con Frambuesa (Imagen 3) -->
+            <article class="gold-border rounded-3xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 transition duration-300 bg-white group">
+                <div>
+                    <div class="relative h-60 overflow-hidden bg-navidad-rojoOscuro">
+                        <img src="mousse-chocolate-navidena-1125x843.jpg" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x500/B22222/FFF1A8?text=Mousse+Reno+Frambuesa';"
+                             alt="Ramekins de mousse de chocolate navideño decorados como renos con nueces y frambuesas" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        
+                        <span class="absolute top-3 left-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full border border-yellow-200 shadow">
+                            🍓 Toque Frutal
+                        </span>
+                    </div>
+
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Ramekin Artesanal</span>
+                            <span class="text-lg">🔔</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold text-navidad-rojoOscuro leading-snug">
+                            Mousse Reno Artesanal con Frambuesa
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Intenso mousse de cacao artesanal servido en pocillos individuales, coronado con nueces crujientes, láminas de almendra como ojitos y frambuesa fresca como nariz de Rodolfo.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-5 pt-0 space-y-3">
+                    <div class="flex items-baseline justify-between border-t border-amber-200 pt-3">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Pack x 6 Pocillos</span>
+                            <span class="text-2xl font-black text-navidad-rojo">S/ 48.00</span>
+                        </div>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-lg">6 unidades</span>
+                    </div>
+
+                    <button onclick="pedirWhatsApp('Mousse Reno Artesanal con Frambuesa (Pack x 6)', 'S/ 48.00')" 
+                            class="btn-shimmer w-full bg-gradient-to-r from-navidad-rojo to-navidad-rojoVivo hover:from-red-700 hover:to-red-600 text-white font-bold py-3 px-4 rounded-2xl border-2 border-navidad-dorado shadow-md flex items-center justify-center gap-2 transition">
+                        <i class="fab fa-whatsapp text-xl text-yellow-300"></i>
+                        <span>Pedir por WhatsApp</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCTO 4: Mousse Tres Chocolates Festivo -->
+            <article class="gold-border rounded-3xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 transition duration-300 bg-white group">
+                <div>
+                    <div class="relative h-60 overflow-hidden bg-navidad-rojoOscuro">
+                        <!-- REEMPLAZA AQUÍ CON TU IMAGEN: src="mousse-chocolate-menta.jpg" -->
+                        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x500/1B5E20/FFF1A8?text=Mousse+Chocolate+y+Menta';"
+                             alt="Mousse de Chocolate y Menta Navideño" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        
+                        <span class="absolute top-3 left-3 bg-navidad-verde text-white text-xs font-bold px-3 py-1 rounded-full border border-navidad-dorado shadow">
+                            🌿 Espíritu Polar
+                        </span>
+                        <span class="absolute top-3 right-3 bg-navidad-amarillo text-navidad-rojoOscuro text-xs font-extrabold px-2.5 py-1 rounded-full shadow">
+                            ★ Top Ventas
+                        </span>
+                    </div>
+
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-navidad-verde">Refrescante & Cremoso</span>
+                            <span class="text-lg">🎄</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold text-navidad-rojoOscuro leading-snug">
+                            Mousse de Chocolate y Menta Navideño
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Intenso mousse de cacao al 70% con un toque fresco de menta, virutas de chocolate blanco, bastoncitos de caramelo triturados y estrellas doradas comestibles.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-5 pt-0 space-y-3">
+                    <div class="flex items-baseline justify-between border-t border-amber-200 pt-3">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Porción Familiar / Copa</span>
+                            <span class="text-2xl font-black text-navidad-rojo">S/ 38.00</span>
+                        </div>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-lg">6 - 8 porciones</span>
+                    </div>
+
+                    <button onclick="pedirWhatsApp('Mousse de Chocolate y Menta Navideño', 'S/ 38.00')" 
+                            class="btn-shimmer w-full bg-gradient-to-r from-navidad-rojo to-navidad-rojoVivo hover:from-red-700 hover:to-red-600 text-white font-bold py-3 px-4 rounded-2xl border-2 border-navidad-dorado shadow-md flex items-center justify-center gap-2 transition">
+                        <i class="fab fa-whatsapp text-xl text-yellow-300"></i>
+                        <span>Pedir por WhatsApp</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCTO 2 -->
+            <article class="gold-border rounded-3xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 transition duration-300 bg-white group">
+                <div>
+                    <div class="relative h-60 overflow-hidden bg-navidad-rojoOscuro">
+                        <!-- REEMPLAZA AQUÍ CON TU IMAGEN: src="mousse-frutos-rojos.jpg" -->
+                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=80" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x500/B22222/FFF1A8?text=Mousse+Frutos+Rojos';"
+                             alt="Mousse de Frutos Rojos y Champagne" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        
+                        <span class="absolute top-3 left-3 bg-navidad-rojo text-white text-xs font-bold px-3 py-1 rounded-full border border-navidad-dorado shadow">
+                            🍒 Gala Roja
+                        </span>
+                        <span class="absolute top-3 right-3 bg-navidad-amarillo text-navidad-rojoOscuro text-xs font-extrabold px-2.5 py-1 rounded-full shadow">
+                            ✨ Especial
+                        </span>
+                    </div>
+
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-navidad-rojo">Elegante & Festivo</span>
+                            <span class="text-lg">🎅</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold text-navidad-rojoOscuro leading-snug">
+                            Mousse de Frutos Rojos y Champagne
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Delicado mousse de fresas, frambuesas y arándanos perfumado con esencia de champagne rosado, coronado con jalea brillante de frutos del bosque y hojas de oro.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-5 pt-0 space-y-3">
+                    <div class="flex items-baseline justify-between border-t border-amber-200 pt-3">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Porción Familiar / Copa</span>
+                            <span class="text-2xl font-black text-navidad-rojo">S/ 42.00</span>
+                        </div>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-lg">6 - 8 porciones</span>
+                    </div>
+
+                    <button onclick="pedirWhatsApp('Mousse de Frutos Rojos y Champagne', 'S/ 42.00')" 
+                            class="btn-shimmer w-full bg-gradient-to-r from-navidad-verde to-navidad-verdeClaro hover:from-green-800 hover:to-green-700 text-white font-bold py-3 px-4 rounded-2xl border-2 border-navidad-dorado shadow-md flex items-center justify-center gap-2 transition">
+                        <i class="fab fa-whatsapp text-xl text-yellow-300"></i>
+                        <span>Pedir por WhatsApp</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCTO 3 -->
+            <article class="gold-border rounded-3xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 transition duration-300 bg-white group">
+                <div>
+                    <div class="relative h-60 overflow-hidden bg-navidad-rojoOscuro">
+                        <!-- REEMPLAZA AQUÍ CON TU IMAGEN: src="mousse-turron-almendras.jpg" -->
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=700&q=80" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x500/D4AF37/7A0C0C?text=Mousse+Turr%C3%B3n+y+Almendras';"
+                             alt="Mousse de Turrón y Almendras Doradas" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        
+                        <span class="absolute top-3 left-3 bg-amber-600 text-white text-xs font-bold px-3 py-1 rounded-full border border-yellow-200 shadow">
+                            🌟 Oro Navideño
+                        </span>
+                    </div>
+
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-amber-700">Tradición Dulce</span>
+                            <span class="text-lg">🔔</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold text-navidad-rojoOscuro leading-snug">
+                            Mousse de Turrón y Almendras Doradas
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Cremoso mousse artesanal de turrón de almendras tostadas con miel de abeja, base crocante de galleta especiada de jengibre y lluvia de almendras acarameladas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-5 pt-0 space-y-3">
+                    <div class="flex items-baseline justify-between border-t border-amber-200 pt-3">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Porción Familiar / Copa</span>
+                            <span class="text-2xl font-black text-navidad-rojo">S/ 40.00</span>
+                        </div>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-lg">6 - 8 porciones</span>
+                    </div>
+
+                    <button onclick="pedirWhatsApp('Mousse de Turrón y Almendras Doradas', 'S/ 40.00')" 
+                            class="btn-shimmer w-full bg-gradient-to-r from-navidad-rojo to-navidad-rojoVivo hover:from-red-700 hover:to-red-600 text-white font-bold py-3 px-4 rounded-2xl border-2 border-navidad-dorado shadow-md flex items-center justify-center gap-2 transition">
+                        <i class="fab fa-whatsapp text-xl text-yellow-300"></i>
+                        <span>Pedir por WhatsApp</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- PRODUCTO 4 -->
+            <article class="gold-border rounded-3xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:-translate-y-2 transition duration-300 bg-white group">
+                <div>
+                    <div class="relative h-60 overflow-hidden bg-navidad-rojoOscuro">
+                        <!-- REEMPLAZA AQUÍ CON TU IMAGEN: src="mousse-tres-chocolates.jpg" -->
+                        <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x500/7A0C0C/FFF1A8?text=Mousse+Tres+Chocolates';"
+                             alt="Mousse de Tres Chocolates con Decoración Festiva" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        
+                        <span class="absolute top-3 left-3 bg-navidad-verdeOscuro text-yellow-300 text-xs font-bold px-3 py-1 rounded-full border border-navidad-dorado shadow">
+                            🎁 Clásico Irresistible
+                        </span>
+                    </div>
+
+                    <div class="p-5 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold uppercase tracking-wider text-navidad-verde">Triple Placer</span>
+                            <span class="text-lg">⛄</span>
+                        </div>
+                        <h3 class="font-display text-lg font-bold text-navidad-rojoOscuro leading-snug">
+                            Mousse Tres Chocolates Festivo
+                        </h3>
+                        <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                            Tres capas perfectas de chocolate bitter, chocolate con leche y chocolate blanco aterciopelado, decorado con arbolitos de chocolate, perlas doradas y cerezas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="p-5 pt-0 space-y-3">
+                    <div class="flex items-baseline justify-between border-t border-amber-200 pt-3">
+                        <div>
+                            <span class="text-xs text-gray-500 block">Porción Familiar / Copa</span>
+                            <span class="text-2xl font-black text-navidad-rojo">S/ 45.00</span>
+                        </div>
+                        <span class="text-xs font-semibold bg-amber-100 text-amber-900 px-2.5 py-1 rounded-lg">8 - 10 porciones</span>
+                    </div>
+
+                    <button onclick="pedirWhatsApp('Mousse Tres Chocolates Festivo', 'S/ 45.00')" 
+                            class="btn-shimmer w-full bg-gradient-to-r from-navidad-verde to-navidad-verdeClaro hover:from-green-800 hover:to-green-700 text-white font-bold py-3 px-4 rounded-2xl border-2 border-navidad-dorado shadow-md flex items-center justify-center gap-2 transition">
+                        <i class="fab fa-whatsapp text-xl text-yellow-300"></i>
+                        <span>Pedir por WhatsApp</span>
+                    </button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 4. GALERÍA 'NUESTRAS DULZURAS NAVIDEÑAS' CON MARCOS DORADOS             -->
+    <!-- ===================================================================== -->
+    <section id="galeria" class="py-16 sm:py-20 bg-gradient-to-b from-navidad-rojoOscuro via-navidad-rojo to-navidad-rojoOscuro text-white border-y-8 border-navidad-dorado relative overflow-hidden">
+        <!-- Adornos de fondo -->
+        <div class="absolute top-4 left-4 text-5xl opacity-20 select-none pointer-events-none">🎄</div>
+        <div class="absolute bottom-4 right-4 text-5xl opacity-20 select-none pointer-events-none">🦌</div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="inline-block bg-navidad-verde border border-navidad-dorado text-yellow-200 text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                    📸 Vitrina Festiva
+                </span>
+                <h2 class="font-script text-5xl sm:text-6xl gold-text py-1">
+                    Nuestras Dulzuras Navideñas
+                </h2>
+                <p class="text-yellow-100/90 text-sm sm:text-base">
+                    Cada mousse es una obra de arte decorada con amor para compartir momentos inolvidables en familia. ¡Mira nuestras presentaciones individuales y familiares!
+                </p>
+            </div>
+
+            <!-- Grid de Fotos con Marcos Dorados -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Foto Galería 1: Tronco Reno de Chocolate -->
+                <div class="gold-gradient p-2 rounded-3xl shadow-2xl group relative">
+                    <div class="absolute -top-3 -right-3 z-20 w-10 h-10 bg-navidad-verde rounded-full border-2 border-navidad-dorado flex items-center justify-center text-lg shadow-lg">
+                        🦌
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-black">
+                        <img src="WhatsApp Image 2026-09-22 at 9.11.12 PM.jpeg" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/700x525/7A0C0C/FFF1A8?text=Tronco+Reno+Dorado';"
+                             alt="Tronco Reno de Chocolate sobre bandeja dorada" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
+                            <div>
+                                <span class="text-xs text-navidad-amarillo font-bold uppercase">Centro de Mesa</span>
+                                <h3 class="font-bold text-white text-base">Tronco Reno con Cuernos Dorados</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto Galería 2: Copas Reno con Nueces -->
+                <div class="gold-gradient p-2 rounded-3xl shadow-2xl group relative">
+                    <div class="absolute -top-3 -right-3 z-20 w-10 h-10 bg-navidad-rojo rounded-full border-2 border-navidad-dorado flex items-center justify-center text-lg shadow-lg">
+                        🎅
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-black">
+                        <img src="images.jpg" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/700x525/1B5E20/FFF1A8?text=Copas+Reno+Navide%C3%B1as';"
+                             alt="Copas individuales de mousse de chocolate decoradas como renos" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
+                            <div>
+                                <span class="text-xs text-navidad-amarillo font-bold uppercase">Textura Irresistible</span>
+                                <h3 class="font-bold text-white text-base">Copas Reno Cremosas con Nueces</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto Galería 3: Ramekins Reno con Frambuesas -->
+                <div class="gold-gradient p-2 rounded-3xl shadow-2xl group relative sm:col-span-2 lg:col-span-1">
+                    <div class="absolute -top-3 -right-3 z-20 w-10 h-10 bg-amber-500 rounded-full border-2 border-white flex items-center justify-center text-lg shadow-lg">
+                        ⭐
+                    </div>
+                    <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-black">
+                        <img src="mousse-chocolate-navidena-1125x843.jpg" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/700x525/B22222/FFF1A8?text=Mousse+Reno+Frambuesa';"
+                             alt="Ramekins de mousse navideño con cintas rojas y doradas" 
+                             class="replaceable-photo w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-4">
+                            <div>
+                                <span class="text-xs text-navidad-amarillo font-bold uppercase">Ideal para Compartir</span>
+                                <h3 class="font-bold text-white text-base">Mousse Reno con Almendras y Frambuesa</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Botón hacia Instagram -->
+            <div class="mt-12 text-center">
+                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="btn-shimmer inline-flex items-center gap-3 bg-white text-navidad-rojoOscuro hover:bg-yellow-50 font-extrabold py-3.5 px-8 rounded-full border-2 border-navidad-dorado shadow-xl transition transform hover:scale-105">
+                    <i class="fab fa-instagram text-2xl text-pink-600"></i>
+                    <span>Ver más fotos en Instagram: @Dulzura para tu navidad</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 5. PROMOCIONES Y PACKS PARA LA CENA DE NOCHEBUENA                     -->
+    <!-- ===================================================================== -->
+    <section id="packs" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-14 space-y-3">
+            <span class="inline-flex items-center gap-2 bg-green-100 text-navidad-verdeOscuro border border-navidad-dorado text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full">
+                <span>🎁</span> Ofertas Especiales de Temporada <span>🎁</span>
+            </span>
+            <h2 class="font-display text-3xl sm:text-5xl font-black text-navidad-verdeOscuro">
+                Packs para tu <span class="text-navidad-rojo">Cena Navideña</span>
+            </h2>
+            <p class="text-gray-700 text-sm sm:text-base">
+                Ahorra y sorprende a todos tus invitados o envía un detalle inolvidable con nuestros combos festivos listos para entregar.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+            
+            <!-- PACK 1 -->
+            <div class="bg-white rounded-3xl border-4 border-navidad-verde shadow-xl p-7 flex flex-col justify-between relative">
+                <div class="absolute -top-4 left-6 bg-navidad-verde text-white text-xs font-bold px-4 py-1 rounded-full border border-navidad-dorado">
+                    🎄 Ideal para Regalar
+                </div>
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-display text-2xl font-bold text-navidad-verdeOscuro">Pack Detalle de Santa</h3>
+                        <span class="text-3xl">🎅</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Perfecto para amigos secretos, intercambio de regalos o sorprender a alguien especial.</p>
+                    <ul class="space-y-2.5 text-sm text-gray-700 border-t border-gray-200 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-navidad-verde font-bold">✓</span> 4 Copas personales de Mousse (sabores surtidos)</li>
+                        <li class="flex items-center gap-2"><span class="text-navidad-verde font-bold">✓</span> Caja navideña rígida con lazo dorado</li>
+                        <li class="flex items-center gap-2"><span class="text-navidad-verde font-bold">✓</span> Tarjeta dedicatoria personalizada</li>
+                        <li class="flex items-center gap-2"><span class="text-navidad-verde font-bold">✓</span> Cucharitas doradas incluidas</li>
+                    </ul>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-gray-200 space-y-4">
+                    <div class="flex items-baseline justify-between">
+                        <span class="text-sm text-gray-400 line-through">Antes S/ 60.00</span>
+                        <span class="text-3xl font-black text-navidad-verde">S/ 49.00</span>
+                    </div>
+                    <button onclick="pedirWhatsApp('Pack Detalle de Santa (4 Copas + Caja Regalo)', 'S/ 49.00')" 
+                            class="w-full bg-navidad-verde hover:bg-navidad-verdeClaro text-white font-bold py-3.5 px-5 rounded-2xl border-2 border-navidad-dorado shadow-lg flex items-center justify-center gap-2 transition">
+                        <i class="fab fa-whatsapp text-xl text-yellow-300"></i>
+                        <span>Reservar Pack Santa</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PACK 2 (DESTACADO) -->
+            <div class="bg-gradient-to-b from-navidad-rojoOscuro to-navidad-rojo text-white rounded-3xl border-4 border-navidad-dorado shadow-2xl p-8 flex flex-col justify-between relative transform lg:-translate-y-4">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 gold-gradient text-navidad-rojoOscuro text-xs font-black uppercase px-5 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+                    ⭐ MÁS PEDIDO EN NOCHEBUENA ⭐
+                </div>
+                <div class="space-y-4 pt-3">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-display text-2xl sm:text-3xl font-black text-navidad-amarillo">Banquete Dulce Nochebuena</h3>
+                        <span class="text-4xl">👑</span>
+                    </div>
+                    <p class="text-sm text-yellow-100">El protagonista absoluto de tu mesa navideña para compartir en familia después de la cena.</p>
+                    <ul class="space-y-3 text-sm text-white border-t border-navidad-dorado/40 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-navidad-amarillo font-bold">★</span> <strong>2 Mousses Familiares</strong> a elección (16 porciones en total)</li>
+                        <li class="flex items-center gap-2"><span class="text-navidad-amarillo font-bold">★</span> Decoración premium con figuras navideñas y hojas de oro</li>
+                        <li class="flex items-center gap-2"><span class="text-navidad-amarillo font-bold">★</span> <strong>GRATIS:</strong> 2 Copas de Mousse de Chocolate y Menta</li>
+                        <li class="flex items-center gap-2"><span class="text-navidad-amarillo font-bold">★</span> Empaque térmico festivo y tarjeta navideña</li>
+                    </ul>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-navidad-dorado/40 space-y-4">
+                    <div class="flex items-baseline justify-between">
+                        <span class="text-sm text-yellow-200/70 line-through">Antes S/ 95.00</span>
+                        <span class="text-4xl font-black text-navidad-amarillo">S/ 75.00</span>
+                    </div>
+                    <button onclick="pedirWhatsApp('Pack Banquete Dulce Nochebuena (2 Familiares + 2 Copas Gratis)', 'S/ 75.00')" 
+                            class="btn-shimmer w-full gold-gradient text-navidad-rojoOscuro font-black py-4 px-6 rounded-2xl border-2 border-white shadow-xl flex items-center justify-center gap-2 text-base transition transform hover:scale-105">
+                        <i class="fab fa-whatsapp text-2xl text-green-700"></i>
+                        <span>¡Quiero el Pack Nochebuena!</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PACK 3 -->
+            <div class="bg-white rounded-3xl border-4 border-navidad-dorado shadow-xl p-7 flex flex-col justify-between relative">
+                <div class="absolute -top-4 left-6 bg-amber-500 text-navidad-rojoOscuro text-xs font-extrabold px-4 py-1 rounded-full border border-white">
+                    ✨ Reunión Familiar
+                </div>
+                <div class="space-y-4 pt-2">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-display text-2xl font-bold text-navidad-rojoOscuro">Pack Estrella Dorada</h3>
+                        <span class="text-3xl">🌟</span>
+                    </div>
+                    <p class="text-sm text-gray-600">Variedad de sabores para que cada invitado pruebe su mousse favorito en la fiesta.</p>
+                    <ul class="space-y-2.5 text-sm text-gray-700 border-t border-gray-200 pt-4">
+                        <li class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> 1 Mousse Familiar (8 porciones)</li>
+                        <li class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> 4 Copas personales de sabores variados</li>
+                        <li class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Topper navideño dorado "Feliz Navidad"</li>
+                        <li class="flex items-center gap-2"><span class="text-amber-600 font-bold">✓</span> Presentación lista para servir</li>
+                    </ul>
+                </div>
+
+                <div class="pt-6 mt-6 border-t border-gray-200 space-y-4">
+                    <div class="flex items-baseline justify-between">
+                        <span class="text-sm text-gray-400 line-through">Antes S/ 78.00</span>
+                        <span class="text-3xl font-black text-navidad-rojo">S/ 64.00</span>
+                    </div>
+                    <button onclick="pedirWhatsApp('Pack Estrella Dorada (1 Familiar + 4 Copas)', 'S/ 64.00')" 
+                            class="w-full bg-navidad-rojo hover:bg-navidad-rojoVivo text-white font-bold py-3.5 px-5 rounded-2xl border-2 border-navidad-dorado shadow-lg flex items-center justify-center gap-2 transition">
+                        <i class="fab fa-whatsapp text-xl text-yellow-300"></i>
+                        <span>Reservar Pack Estrella</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- 6. SECCIÓN DE CONTACTO DIRECTO, PEDIDOS PERSONALIZADOS Y REDES        -->
+    <!-- ===================================================================== -->
+    <section id="contacto" class="py-16 bg-gradient-to-br from-navidad-verdeOscuro via-navidad-verde to-navidad-verdeOscuro text-white border-t-8 border-navidad-dorado">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="gold-border rounded-3xl p-1 shadow-2xl">
+                <div class="bg-navidad-rojoOscuro/95 rounded-[21px] p-6 sm:p-10 lg:p-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                        
+                        <!-- Información de Contacto y Redes -->
+                        <div class="space-y-6">
+                            <div class="inline-flex items-center gap-2 bg-navidad-verde border border-navidad-dorado px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-yellow-200">
+                                <span>🔔</span> Haz tu Reserva Hoy Mismo
+                            </div>
+                            <h2 class="font-display text-3xl sm:text-4xl font-black text-white leading-tight">
+                                Endulza tu Navidad con <span class="font-script text-4xl sm:text-5xl gold-text block mt-1">Dulzura para tu Navidad</span>
+                            </h2>
+                            <p class="text-yellow-100/90 text-sm sm:text-base leading-relaxed">
+                                Agenda tu pedido con anticipación para asegurar tu entrega el 24, 25 o 31 de diciembre. Escríbenos directamente a nuestro WhatsApp o síguenos en Instagram para ver nuestras novedades diarias.
+                            </p>
+
+                            <!-- Tarjetas de WhatsApp e Instagram -->
+                            <div class="space-y-4 pt-2">
+                                <!-- WhatsApp -->
+                                <a href="https://wa.me/51968994343?text=Hola%20Dulzura%20para%20tu%20Navidad%20%F0%9F%8E%84%2C%20quiero%20hacer%20una%20consulta%20sobre%20los%20mousses%20navide%C3%B1os." target="_blank" rel="noopener noreferrer" 
+                                   class="flex items-center gap-4 bg-navidad-verde hover:bg-green-700 p-4 rounded-2xl border-2 border-navidad-dorado shadow-lg transition transform hover:scale-[1.02]">
+                                    <div class="w-14 h-14 rounded-2xl bg-white text-green-600 flex items-center justify-center text-3xl shrink-0 shadow">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs uppercase font-bold text-yellow-300 tracking-wider">Pedidos Rápidos por WhatsApp</span>
+                                        <span class="block text-xl sm:text-2xl font-black text-white">968 994 343</span>
+                                        <span class="block text-xs text-green-200">Clic aquí para iniciar chat directo →</span>
+                                    </div>
+                                </a>
+
+                                <!-- Instagram -->
+                                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" 
+                                   class="flex items-center gap-4 bg-gradient-to-r from-purple-800 via-pink-700 to-amber-600 hover:opacity-95 p-4 rounded-2xl border-2 border-navidad-dorado shadow-lg transition transform hover:scale-[1.02]">
+                                    <div class="w-14 h-14 rounded-2xl bg-white text-pink-600 flex items-center justify-center text-3xl shrink-0 shadow">
+                                        <i class="fab fa-instagram"></i>
+                                    </div>
+                                    <div>
+                                        <span class="block text-xs uppercase font-bold text-yellow-200 tracking-wider">Síguenos en Instagram</span>
+                                        <span class="block text-lg sm:text-xl font-black text-white">@Dulzura para tu navidad</span>
+                                        <span class="block text-xs text-pink-100">Fotos reales, sorteos y promos navideñas →</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Formulario Rápido que arma el mensaje de WhatsApp -->
+                        <div class="bg-navidad-crema text-gray-800 rounded-3xl p-6 sm:p-8 border-4 border-navidad-dorado shadow-xl">
+                            <h3 class="font-display text-xl sm:text-2xl font-bold text-navidad-rojoOscuro mb-1 flex items-center gap-2">
+                                <span>📝</span> Arma tu Pedido Navideño
+                            </h3>
+                            <p class="text-xs text-gray-600 mb-5">Completa los datos y te redirigiremos a WhatsApp con tu pedido listo.</p>
+
+                            <form id="whatsapp-order-form" class="space-y-4">
+                                <div>
+                                    <label for="client-name" class="block text-xs font-bold uppercase text-navidad-verdeOscuro mb-1">Tu Nombre</label>
+                                    <input type="text" id="client-name" required placeholder="Ej. María Fernanda" 
+                                           class="w-full px-4 py-2.5 rounded-xl border-2 border-amber-300 focus:border-navidad-rojo focus:outline-none text-sm">
+                                </div>
+
+                                <div>
+                                    <label for="mousse-choice" class="block text-xs font-bold uppercase text-navidad-verdeOscuro mb-1">Elige tu Mousse o Pack</label>
+                                    <select id="mousse-choice" class="w-full px-4 py-2.5 rounded-xl border-2 border-amber-300 focus:border-navidad-rojo focus:outline-none text-sm bg-white font-medium">
+                                        <option value="Tronco Reno de Chocolate y Avellanas (S/ 45.00)">🦌 Tronco Reno de Chocolate y Avellanas - S/ 45.00</option>
+                                        <option value="Copas Reno Cremoso con Nueces - Pack x 4 (S/ 38.00)">🍫 Copas Reno Cremoso con Nueces (x4) - S/ 38.00</option>
+                                        <option value="Mousse Reno Artesanal con Frambuesa - Pack x 6 (S/ 48.00)">🍓 Mousse Reno Artesanal con Frambuesa (x6) - S/ 48.00</option>
+                                        <option value="Mousse Tres Chocolates Festivo (S/ 45.00)">⛄ Mousse Tres Chocolates Festivo - S/ 45.00</option>
+                                        <option value="Pack Detalle de Santa (S/ 49.00)">🎅 Pack Detalle de Santa - S/ 49.00</option>
+                                        <option value="Pack Banquete Dulce Nochebuena (S/ 75.00)">👑 Pack Banquete Dulce Nochebuena - S/ 75.00</option>
+                                        <option value="Pack Estrella Dorada (S/ 64.00)">✨ Pack Estrella Dorada - S/ 64.00</option>
+                                    </select>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-3">
+                                    <div>
+                                        <label for="order-qty" class="block text-xs font-bold uppercase text-navidad-verdeOscuro mb-1">Cantidad</label>
+                                        <input type="number" id="order-qty" min="1" max="50" value="1" 
+                                               class="w-full px-4 py-2.5 rounded-xl border-2 border-amber-300 focus:border-navidad-rojo focus:outline-none text-sm">
+                                    </div>
+                                    <div>
+                                        <label for="order-date" class="block text-xs font-bold uppercase text-navidad-verdeOscuro mb-1">Fecha de Entrega</label>
+                                        <input type="date" id="order-date" 
+                                               class="w-full px-4 py-2.5 rounded-xl border-2 border-amber-300 focus:border-navidad-rojo focus:outline-none text-sm">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="order-notes" class="block text-xs font-bold uppercase text-navidad-verdeOscuro mb-1">Dedicatoria o Dirección (Opcional)</label>
+                                    <textarea id="order-notes" rows="2" placeholder="Ej. Para la familia Gómez, entregar en la tarde..." 
+                                              class="w-full px-4 py-2 rounded-xl border-2 border-amber-300 focus:border-navidad-rojo focus:outline-none text-sm"></textarea>
+                                </div>
+
+                                <button type="submit" class="btn-shimmer w-full bg-gradient-to-r from-navidad-verde to-navidad-verdeClaro hover:from-green-800 hover:to-green-700 text-white font-extrabold py-3.5 px-6 rounded-2xl border-2 border-navidad-dorado shadow-lg flex items-center justify-center gap-2 text-base transition transform hover:scale-[1.02]">
+                                    <i class="fab fa-whatsapp text-2xl text-yellow-300"></i>
+                                    <span>Enviar Pedido al 968 994 343</span>
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Separador Bastón de Caramelo -->
+    <div class="candy-cane-border w-full"></div>
+
+    <!-- ===================================================================== -->
+    <!-- 7. FOOTER NAVIDEÑO CON DETALLES DORADOS                               -->
+    <!-- ===================================================================== -->
+    <footer class="bg-navidad-rojoOscuro text-yellow-100 pt-12 pb-8 border-t-4 border-navidad-dorado relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-navidad-dorado/30 text-center md:text-left">
+                
+                <!-- Marca -->
+                <div class="space-y-3">
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                        <span class="text-3xl">🎄</span>
+                        <span class="font-script text-3xl gold-text">Dulzura para tu Navidad</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-yellow-100/80 leading-relaxed">
+                        Repostería artesanal especializada en mousses navideños cremosos, decorados con amor y detalles dorados para hacer de tu Nochebuena un recuerdo dulce e inolvidable.
+                    </p>
+                </div>
+
+                <!-- Enlaces Rápidos -->
+                <div class="space-y-3">
+                    <h4 class="font-display font-bold text-navidad-amarillo uppercase tracking-wider text-sm">Navegación Festiva</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#inicio" class="hover:text-navidad-amarillo transition">🎅 Inicio</a></li>
+                        <li><a href="#catalogo" class="hover:text-navidad-amarillo transition">🍮 Catálogo de Mousses</a></li>
+                        <li><a href="#galeria" class="hover:text-navidad-amarillo transition">📸 Galería de Fotos</a></li>
+                        <li><a href="#packs" class="hover:text-navidad-amarillo transition">🎁 Packs de Nochebuena</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contacto Directo -->
+                <div class="space-y-3">
+                    <h4 class="font-display font-bold text-navidad-amarillo uppercase tracking-wider text-sm">Contáctanos</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li class="flex items-center justify-center md:justify-start gap-2">
+                            <i class="fab fa-whatsapp text-green-400 text-lg"></i>
+                            <a href="https://wa.me/51968994343" target="_blank" rel="noopener noreferrer" class="hover:text-white font-bold">
+                                WhatsApp: 968 994 343
+                            </a>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-2">
+                            <i class="fab fa-instagram text-pink-400 text-lg"></i>
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white font-bold">
+                                Instagram: @Dulzura para tu navidad
+                            </a>
+                        </li>
+                        <li class="flex items-center justify-center md:justify-start gap-2 text-yellow-200/80">
+                            <span>🕒</span>
+                            <span>Atención: Lunes a Domingo (Pedidos con reserva)</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-6 text-center text-xs text-yellow-200/75 flex flex-col sm:flex-row items-center justify-between gap-2">
+                <p>© 2026 <strong>Dulzura para tu Navidad</strong>. Todos los derechos reservados. ✨</p>
+                <p>Hecho con mucho ❤️, 🎄 y espíritu navideño.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- BOTÓN FLOTANTE DE WHATSAPP SIEMPRE VISIBLE                            -->
+    <!-- ===================================================================== -->
+    <a href="https://wa.me/51968994343?text=Hola%20Dulzura%20para%20tu%20Navidad%20%F0%9F%8E%84%2C%20quisiera%20pedir%20un%20mousse%20navide%C3%B1o." 
+       target="_blank" 
+       rel="noopener noreferrer"
+       aria-label="Contactar por WhatsApp"
+       class="fixed bottom-5 right-5 z-50 group flex items-center gap-2 bg-gradient-to-r from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white font-bold py-3 px-4 sm:px-5 rounded-full shadow-2xl border-2 border-navidad-dorado transition transform hover:scale-110">
+        <span class="text-lg">🎄</span>
+        <i class="fab fa-whatsapp text-2xl sm:text-3xl"></i>
+        <span class="hidden sm:inline text-sm">Pedir: 968 994 343</span>
+    </a>
+
+
+</body>
+</html>

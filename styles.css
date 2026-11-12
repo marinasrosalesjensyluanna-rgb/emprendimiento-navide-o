@@ -1,0 +1,160 @@
+/* ==========================================================================
+   Dulzura para tu Navidad - Mousses Navideños Artesanales
+   Hoja de Estilos CSS (styles.css)
+   ========================================================================== */
+
+/* Fondo general con textura festiva de puntos dorados y rojos */
+body {
+    background-color: #FFFDF7;
+    background-image: radial-gradient(#D4AF37 0.6px, transparent 0.6px), radial-gradient(#B22222 0.6px, #FFFDF7 0.6px);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+    overflow-x: hidden;
+}
+
+/* Degradado Dorado Metálico */
+.gold-gradient {
+    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+}
+
+/* Efecto de Texto Dorado con brillo */
+.gold-text {
+    background: linear-gradient(135deg, #FBC02D 0%, #FFF59D 30%, #D4AF37 60%, #FFE082 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 2px 10px rgba(212, 175, 55, 0.25);
+}
+
+/* Borde Metálico Dorado */
+.gold-border {
+    border: 3px solid transparent;
+    background-image: linear-gradient(#FFFDF7, #FFFDF7), linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+
+/* Borde estilo Bastón de Caramelo (Candy Cane) */
+.candy-cane-border {
+    height: 10px;
+    background: repeating-linear-gradient(
+        -45deg,
+        #D32F2F,
+        #D32F2F 12px,
+        #FFFFFF 12px,
+        #FFFFFF 24px,
+        #1B5E20 24px,
+        #1B5E20 36px,
+        #FBC02D 36px,
+        #FBC02D 48px
+    );
+}
+
+/* Luces Navideñas Animadas en el Header */
+.christmas-lights {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.christmas-lights li {
+    position: relative;
+    width: 14px;
+    height: 24px;
+    border-radius: 50%;
+    margin-top: -6px;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+}
+
+.christmas-lights li::before {
+    content: "";
+    position: absolute;
+    background: #1B5E20;
+    width: 10px;
+    height: 8px;
+    border-radius: 3px;
+    top: -4px;
+    left: 2px;
+}
+
+.light-red {
+    background: #FF1744;
+    box-shadow: 0 5px 18px 4px rgba(255, 23, 68, 0.85);
+    animation: flash-1 1.6s infinite;
+}
+
+.light-green {
+    background: #00E676;
+    box-shadow: 0 5px 18px 4px rgba(0, 230, 118, 0.85);
+    animation: flash-2 2.1s infinite;
+}
+
+.light-gold {
+    background: #FFD600;
+    box-shadow: 0 5px 18px 4px rgba(255, 214, 0, 0.9);
+    animation: flash-3 1.8s infinite;
+}
+
+@keyframes flash-1 {
+    0%, 100% { opacity: 1; transform: scale(1.05); }
+    50% { opacity: 0.35; transform: scale(0.95); }
+}
+
+@keyframes flash-2 {
+    0%, 100% { opacity: 0.35; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.05); }
+}
+
+@keyframes flash-3 {
+    0%, 100% { opacity: 1; transform: scale(1.08); }
+    40% { opacity: 0.4; transform: scale(0.95); }
+    75% { opacity: 0.95; transform: scale(1.03); }
+}
+
+/* Animación suave de flotación de elementos */
+@keyframes floatSlow {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(3deg); }
+}
+
+.animate-float {
+    animation: floatSlow 4s ease-in-out infinite;
+}
+
+/* Canvas de nieve superpuesto sin bloquear clics */
+#snow-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 40;
+}
+
+/* Efecto de destello / brillo dinámico en botones */
+.btn-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-shimmer::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 30%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.45);
+    transform: rotate(30deg);
+    transition: all 0.6s ease;
+}
+
+.btn-shimmer:hover::after {
+    left: 130%;
+}
+
